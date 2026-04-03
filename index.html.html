@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maiyu INFO</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bg-image">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand fs-3 fw-bold" href="#">Maiyu INFO</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="offcanvas offcanvas-end text-bg-image"
+            tabindex="-1"
+            id="offcanvasNavbar"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title">DETAILS</h5>
+              <button
+                type="button"
+                class="btn-close text-reset"
+                data-bs-dismiss="offcanvas"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link menu-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link menu-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link menu-link" href="#">Events</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link menu-link" href="#">Practice</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link btn contact-btn text-white" href="#"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- About -->
+    <section id="about" class="p-5 data-bs-target">
+      <div class="container">
+        <h2>About</h2>
+        <p>
+          The World Wide Web (WWW) is a system of interlinked hypertext
+          documents accessed via the Internet. It enables users to view and
+          interact with multimedia content using web browsers.
+        </p>
+      </div>
+    </section>
+    <br />
+
+    <section id="Quiz" class="p-5 bg-image">
+      <div class="container1">
+        <h2>Practice: Test Your WWW Knowledge</h2>
+        <form id="quizForm">
+          <p>1. What does WWW stand for?</p>
+          <input type="radio" name="q1" value="a" /> World Wide Web<br />
+          <input type="radio" name="q1" value="b" /> Wide World Web<br />
+          <input type="radio" name="q1" value="c" /> Web World Wide<br /><br />
+
+          <p>2. Who invented the World Wide Web?</p>
+          <input type="radio" name="q2" value="a" /> Tim Berners-Lee<br />
+          <input type="radio" name="q2" value="b" /> Bill Gates<br />
+          <input type="radio" name="q2" value="c" /> Steve Jobs<br /><br />
+
+          <p>3. Which protocol is used by the WWW to transfer data?</p>
+          <input type="radio" name="q3" value="a" /> FTP<br />
+          <input type="radio" name="q3" value="b" /> HTTP<br />
+          <input type="radio" name="q3" value="c" /> SMTP<br /><br />
+
+          <button type="submit" class="btn btn-primary">Submit Quiz</button>
+        </form>
+
+        <div id="result" class="mt-4 fw-bold text-success"></div>
+      </div>
+    </section>
+    <br />
+
+    <script>
+      document
+        .getElementById("quizForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // Stop form from submitting
+
+          // Correct answers
+          const answers = {
+            q1: "a",
+            q2: "a",
+            q3: "b",
+          };
+
+          let score = 0;
+          let total = 3;
+          let resultMsg = "";
+
+          // Check answers
+          for (let q in answers) {
+            const selected = document.querySelector(
+              `input[name="${q}"]:checked`
+            );
+            if (selected) {
+              if (selected.value === answers[q]) {
+                score++;
+              } else {
+                resultMsg += `❌ Question ${q.slice(
+                  1
+                )}: Correct answer is "${answers[q].toUpperCase()}"<br/>`;
+              }
+            } else {
+              resultMsg += `⚠️ Question ${q.slice(1)}: No answer selected<br/>`;
+            }
+          }
+
+          resultMsg =
+            `✅ You scored ${score} out of ${total}<br/><br/>` + resultMsg;
+
+          document.getElementById("result").innerHTML = resultMsg;
+        });
+    </script>
+
+    <!-- Contact Us -->
+    <section id="contact" class="p-5 bg-primary text-white">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p>Author: M.Maiyuri <br />Email: maiyurimuraliraj07@gmail.com</p>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
